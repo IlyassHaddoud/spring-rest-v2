@@ -2,6 +2,7 @@ package com.example.demo.student;
 
 import com.example.demo.subject.Subject;
 import com.example.demo.subject.SubjectRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,21 +12,24 @@ import java.util.List;
 @Service
 public class StudentService {
     private final StudentRepository studentRepository;
-
     private final SubjectRepository subjectRepository;
+
+    private final ModelMapper modelMapper;
+
     @Autowired
-    public StudentService(StudentRepository studentRepository,SubjectRepository subjectRepository) {
+    public StudentService(StudentRepository studentRepository,SubjectRepository subjectRepository,ModelMapper modelMapper) {
         this.studentRepository = studentRepository;
         this.subjectRepository = subjectRepository;
+        this.modelMapper = modelMapper;
     }
 
     public List<Student> getStudents()
     {
         return this.studentRepository.findAll();
     }
-    public Student addStudent(Student student)
+    public Student addStudent(CreateStudentDTO createStudentDTO)
     {
-        return this.studentRepository.save(student);
+        return this.studentRepository.save(convertToStudent(createStudentDTO));
     }
 
     public Student addSubjectToStudent(Integer studentId,Integer subjectId)
@@ -37,4 +41,8 @@ public class StudentService {
         return this.studentRepository.save((student));
     }
 
+    public Student convertToStudent(CreateStudentDTO createStudentDTO)
+    {
+        return this.modelMapper.map(createStudentDTO,Student.class);
+    }
 }

@@ -1,8 +1,8 @@
 package com.example.demo.student;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -26,8 +26,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student addStudent(@RequestBody Student student)
+    public Student addStudent(@Valid @RequestBody CreateStudentDTO createStudentDTO)
     {
-        return this.studentService.addStudent(student);
+        return this.studentService.addStudent(createStudentDTO);
     }
 }

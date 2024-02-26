@@ -15,6 +15,17 @@ public class Student {
     private Integer id;
     private String name;
     private String email;
+
+    private String passwod;
+
+    public String getPasswod() {
+        return passwod;
+    }
+
+    public void setPasswod(String passwod) {
+        this.passwod = passwod;
+    }
+
     @ManyToMany
     @JoinTable(name = "student_subject",
             joinColumns = @JoinColumn(name = "subject_id"),
