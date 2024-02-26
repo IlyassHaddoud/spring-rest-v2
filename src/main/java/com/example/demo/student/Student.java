@@ -28,8 +28,8 @@ public class Student {
 
     @ManyToMany
     @JoinTable(name = "student_subject",
-            joinColumns = @JoinColumn(name = "subject_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id"))
     @JsonIgnoreProperties("students")
     private List<Subject> subjects;
     @ManyToOne
