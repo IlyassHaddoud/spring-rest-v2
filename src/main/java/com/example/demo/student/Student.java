@@ -19,13 +19,14 @@ public class Student {
     @JoinTable(name = "student_subject",
             joinColumns = @JoinColumn(name = "subject_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
+    @JsonIgnoreProperties("students")
     private List<Subject> subjects;
     @ManyToOne
     @JoinColumn(name = "school_id")
     @JsonIgnoreProperties("students")
     private School school;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
 

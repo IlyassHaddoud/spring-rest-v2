@@ -15,7 +15,7 @@ public class School {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany(mappedBy = "school",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "school")
     @JsonIgnore
     private List<Student> students;
 

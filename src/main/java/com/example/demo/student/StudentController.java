@@ -19,6 +19,12 @@ public class StudentController {
         return this.studentService.getStudents();
     }
 
+    @PostMapping("/{student_id}/subjects/{subject_id}")
+    public Student addSubjectToStudent(@PathVariable Integer student_id,@PathVariable Integer subject_id)
+    {
+        return this.studentService.addSubjectToStudent(student_id,subject_id);
+    }
+
     @PostMapping
     public Student addStudent(@RequestBody Student student)
     {

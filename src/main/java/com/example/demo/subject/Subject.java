@@ -1,6 +1,8 @@
 package com.example.demo.subject;
 
 import com.example.demo.student.Student;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,7 +14,8 @@ public class Subject {
     private Integer id;
     private String title;
 
-    @ManyToMany(mappedBy = "subjects")
+    @ManyToMany
+    @JsonIgnoreProperties("subjects")
     private List<Student> students;
 
     public Integer getId() {
