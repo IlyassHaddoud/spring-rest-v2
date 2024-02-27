@@ -38,7 +38,7 @@ public class StudentService {
         Subject subject = this.subjectRepository.findById(subjectId).orElseThrow(() -> new RuntimeException("Subject Not Found"));
 
         student.getSubjects().add(subject);
-        return this.studentRepository.save((student));
+        return this.studentRepository.save(student);
     }
 
     public Student convertToStudent(CreateStudentDTO createStudentDTO)

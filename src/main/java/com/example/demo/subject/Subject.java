@@ -14,7 +14,7 @@ public class Subject {
     private Integer id;
     private String title;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "subjects")
     @JsonIgnoreProperties("subjects")
     private List<Student> students;
 

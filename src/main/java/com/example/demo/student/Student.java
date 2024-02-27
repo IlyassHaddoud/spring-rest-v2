@@ -15,15 +15,14 @@ public class Student {
     private Integer id;
     private String name;
     private String email;
+    private String password;
 
-    private String passwod;
-
-    public String getPasswod() {
-        return passwod;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswod(String passwod) {
-        this.passwod = passwod;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @ManyToMany
